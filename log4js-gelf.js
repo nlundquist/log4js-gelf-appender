@@ -33,9 +33,7 @@ log4js.GELFAppender.prototype = log4js.extend(new log4js.AjaxAppender(), {
  * @extends log4js.Layout
  * @author Stephan Strittmatter
  */
-log4js.GELFLayout = function() {
-	this.df = new log4js.DateFormatter();
-};
+log4js.GELFLayout = function() {};
 log4js.GELFLayout.prototype = log4js.extend(new log4js.Layout(), {
 	/**
 	 * Implement this method to create your own layout format.
