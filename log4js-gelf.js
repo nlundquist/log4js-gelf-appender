@@ -9,18 +9,18 @@
  * of XHR.
  *
  * @constructor
- * @extends Log4js.Appender
+ * @extends log4js.Appender
  * @param logger log4js instance this appender is attached to
  * @author Nils Lundquist
  */
-Log4js.GELFAppender = function(loggingUrl) {
+log4js.GELFAppender = function(loggingUrl) {
     this.loggingUrl = loggingUrl;
-	this.layout = new Log4js.GELFLayout();
+	this.layout = new log4js.GELFLayout();
 };
 
-Log4js.GELFAppender.prototype = Log4js.extend(new Log4js.AjaxAppender(), {
+log4js.GELFAppender.prototype = log4js.extend(new log4js.AjaxAppender(), {
 	 toString: function() {
-	 	return "Log4js.JSGELFAppender";
+	 	return "log4js.JSGELFAppender";
 	 }
 
 })
@@ -30,16 +30,16 @@ Log4js.GELFAppender.prototype = Log4js.extend(new Log4js.AjaxAppender(), {
  * JSONLayout write the logs in JSON format.
  * JSON library is required to use this Layout. See also {@link http://www.json.org}
  * @constructor
- * @extends Log4js.Layout
+ * @extends log4js.Layout
  * @author Stephan Strittmatter
  */
-Log4js.GELFLayout = function() {
-	this.df = new Log4js.DateFormatter();
+log4js.GELFLayout = function() {
+	this.df = new log4js.DateFormatter();
 };
-Log4js.GELFLayout.prototype = Log4js.extend(new Log4js.Layout(), {
+log4js.GELFLayout.prototype = log4js.extend(new log4js.Layout(), {
 	/**
 	 * Implement this method to create your own layout format.
-	 * @param {Log4js.LoggingEvent} loggingEvent loggingEvent to format
+	 * @param {log4js.LoggingEvent} loggingEvent loggingEvent to format
 	 * @return formatted String
 	 * @type String
 	 */
