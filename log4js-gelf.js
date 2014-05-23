@@ -54,12 +54,15 @@ log4js.GELFLayout.prototype = log4js.extend(new log4js.Layout(), {
         return JSON.stringify(gelf);
 	},
 	/**
-	 * Send common content type. Endpoint doesn't accept 'application/json' as expected.
+	 * Send text content type. Endpoint doesn't accept 'application/json' as expected.
      * Leaving unset causes problems in Safari XHR.
-	 * @return The base class returns "text/xml".
+	 * @return The base class returns "text/plain".
 	 * @type String
 	 */
-	getContentType: 'text/plain',
+	getContentType: function() {
+        return 'text/plain';
+    },
+
 	/**
 	 * @return Returns the header for the layout format. The base class returns null.
 	 * @type String
