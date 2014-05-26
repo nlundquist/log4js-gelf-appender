@@ -51,6 +51,13 @@ log4js.GELFLayout.prototype = log4js.extend(new log4js.Layout(), {
             '_user-agent': navigator.userAgent
         };
 
+        var extra = loggingEvent.extra;
+        for (var key in extra) {
+            if (extra.hasOwnProperty(key)) {
+                gelf['_'+key] = extra[key];
+            }
+        }
+
         return JSON.stringify(gelf);
 	},
 	/**
