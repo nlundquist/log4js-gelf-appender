@@ -15,15 +15,14 @@
  */
 log4js.GELFAppender = function(loggingUrl) {
     this.loggingUrl = loggingUrl;
-	this.layout = new log4js.GELFLayout();
+    this.layout = new log4js.GELFLayout();
 };
 
 log4js.GELFAppender.prototype = log4js.extend(new log4js.AjaxAppender(), {
-	 toString: function() {
-	 	return "log4js.JSGELFAppender";
-	 }
-
-})
+    toString: function() {
+        return "log4js.JSGELFAppender";
+    }
+});
 
 
 /**
@@ -35,13 +34,13 @@ log4js.GELFAppender.prototype = log4js.extend(new log4js.AjaxAppender(), {
  */
 log4js.GELFLayout = function() {};
 log4js.GELFLayout.prototype = log4js.extend(new log4js.Layout(), {
-	/**
-	 * Implement this method to create your own layout format.
-	 * @param {log4js.LoggingEvent} loggingEvent loggingEvent to format
-	 * @return formatted String
-	 * @type String
-	 */
-	format: function(loggingEvent) {
+    /**
+     * Implement this method to create your own layout format.
+     * @param {log4js.LoggingEvent} loggingEvent loggingEvent to format
+     * @return formatted String
+     * @type String
+     */
+    format: function(loggingEvent) {
         var gelf = {
             'host': location.href,
             'short_message': loggingEvent.message,
@@ -59,33 +58,33 @@ log4js.GELFLayout.prototype = log4js.extend(new log4js.Layout(), {
         }
 
         return JSON.stringify(gelf);
-	},
-	/**
-	 * Send text content type. Endpoint doesn't accept 'application/json' as expected.
+    },
+    /**
+     * Send text content type. Endpoint doesn't accept 'application/json' as expected.
      * Leaving unset causes problems in Safari XHR.
-	 * @return The base class returns "text/plain".
-	 * @type String
-	 */
-	getContentType: function() {
+     * @return The base class returns "text/plain".
+     * @type String
+     */
+    getContentType: function() {
         return 'text/plain';
     },
 
-	/**
-	 * @return Returns the header for the layout format. The base class returns null.
-	 * @type String
-	 */
-	getHeader: function() {
-		return "";
-	},
-	/**
-	 * @return Returns the footer for the layout format. The base class returns null.
-	 * @type String
-	 */
-	getFooter: function() {
-		return "";
-	},
+    /**
+     * @return Returns the header for the layout format. The base class returns null.
+     * @type String
+     */
+    getHeader: function() {
+        return "";
+    },
+    /**
+     * @return Returns the footer for the layout format. The base class returns null.
+     * @type String
+     */
+    getFooter: function() {
+        return "";
+    },
 
-	getSeparator: function() {
-		return "";
-	}
+    getSeparator: function() {
+        return "";
+    }
 });
